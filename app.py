@@ -1,6 +1,9 @@
 import streamlit as st
 import os
 
+# pip install streamlit pinecone langchain_pinecone langchain_cohere langchain-azure-ai langchain
+# azure-ai-inference langchain-azure-ai langchain-core
+
 # Langchain Imports
 from langchain.retrievers.contextual_compression import ContextualCompressionRetriever
 from langchain.prompts import PromptTemplate
@@ -31,7 +34,7 @@ def check_password():
 
     with col2:
         # --- 1. Add a professional header ---
-        # st.image("reeeliance-logo-rgb@1x.png") # Optional: Uncomment if you have a logo
+        st.image("reeeliance-logo-rgb@1x.png") # Optional: Uncomment if you have a logo
         st.title("Reeeliance Internal Chatbot")
         st.markdown("Please enter your credentials to continue.")
 
