@@ -153,14 +153,32 @@ with st.sidebar:
     Welcome to the reeeliance internal chatbot! Use this tool to ask questions or get technical assistance.
     """)
     st.markdown("---")
+
+    # --- New Section for Resources and Info ---
+    st.markdown("**Resources & Data Scope**")
+
+    # 1. GitHub Link Button
+    st.link_button("View Project on GitHub", "https://github.com/J-Marlon-H/eee_rag")
+
+    # 2. Data Source Information in an Expander
+    with st.expander("Currently Indexed Knowledge Base"):
+        st.markdown("""
+        * The project guidelines (from Teamworks)
+        * The Quote template (from Google Drive)
+        """)
     
+    st.markdown("---")
+
+    # --- Existing Section for Controls ---
+    st.markdown("**Controls**")
+
     selected_model = st.selectbox(
         "Select Model",
         ["RAG - Internal Documents", "Chatbot (Not Implemented)"]
     )
 
     if st.button("Clear Chat History"):
-        clear_chat_history()
+        clear_chat_history() # Make sure this function is defined in your app
 
     st.sidebar.markdown("""
     ---
@@ -204,6 +222,12 @@ if user_input := st.chat_input("Enter your question here:"):
                         metadata = doc.metadata
                         source_file = metadata.get("file_name", "Unknown Source")
                         st.info(f"Source: {source_file}")
+                                    # Display the actual page content from the document
+                        # st.write() is great because it correctly renders text and markdown
+                        st.write(doc.page_content)
+                        
+                        # Add a visual separator between documents
+                        st.markdown("---")
 
                 st.session_state.rag_chat_history.append((user_input, full_response))
         else:
