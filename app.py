@@ -108,15 +108,22 @@ def setup_rag_chain():
     )
 
     # Final Retriever Chain Prompt
-    template = """Beantworte die Frage mit den Quellen und deinem vorhandenen Wissen.
-                  Inkludiere alle relevanten Details.
-                  Jeder Satz der aus den Quellen kommt muss mit einer Quellenangabe enden.
-                  Wenn Informationen aus mehreren Quellen stammen,
-                  gebe diese in der Form Quelle 1; Quelle 2 an.
-                  Formattiere die Antwort sehr übersichtlich.
-                  Quellen: {context}
-                  Frage: {question}
-                  Antwort:"""
+    template = """
+                You are a friendly and helpful assistant. Your main task is to answer the user's question based on the provided context.
+
+                Key Instructions:
+                1. Base your answer on the provided context. You may use your own knowledge to make the response more natural and complete, but you must not contradict the facts in the context.
+                2. If the context does not contain enough information to answer the question, clearly state that you couldn't find the answer in the provided documents. Do not try to make up an answer.
+                3. Always answer in the same language as the user's question.
+
+                Context:
+                {context}
+
+                Question:
+                {question}
+
+                Answer:
+                """
     prompt = PromptTemplate.from_template(template)
 
     conversational_chain = ConversationalRetrievalChain.from_llm(
