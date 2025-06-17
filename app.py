@@ -147,6 +147,7 @@ def clear_chat_history():
 
 # --- Sidebar Layout ---
 with st.sidebar:
+    st.image("reeeliance-logo-rgb@1x.png")
     st.title("🔎 Reeeliance Chatbot")
     st.markdown("---")
     st.markdown("""
