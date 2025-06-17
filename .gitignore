@@ -1,0 +1,22 @@
+# Ignore Python virtual environments
+env_prod/
+venv_rag_old/
+myenv/
+env/
+venv/
+
+# Ignore Streamlit secrets file
+.streamlit/secrets.toml
+
+# Ignore miscellaneous files
+txt.txt
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore IDE-specific folders
+.vscode/
+.idea/
